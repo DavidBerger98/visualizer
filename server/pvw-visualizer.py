@@ -91,6 +91,8 @@ if '--virtual-env' in sys.argv:
   else:
     exec(open(virtualEnv).read(), {'__file__': virtualEnv})
 
+# Use local proxy file
+defaultProxyFile = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'proxies.json')
 
 # import paraview modules.
 from paraview.web import pv_wslink
@@ -151,7 +153,7 @@ class _VisualizerServer(pv_wslink.PVServerProtocol):
         parser.add_argument("--exclude-regex", default=_VisualizerServer.excludeRegex, help="Regular expression for file filtering", dest="exclude")
         parser.add_argument("--group-regex", default=_VisualizerServer.groupRegex, help="Regular expression for grouping files", dest="group")
         parser.add_argument("--plugins", default="", help="List of fully qualified path names to plugin objects to load", dest="plugins")
-        parser.add_argument("--proxies", default=None, help="Path to a file with json text containing filters to load", dest="proxies")
+        parser.add_argument("--proxies", default=defaultProxyFile, help="Path to a file with json text containing filters to load", dest="proxies")
         parser.add_argument("--no-auto-readers", help="If provided, disables ability to use non-configured readers", action="store_true", dest="no_auto_readers")
         parser.add_argument("--save-data-dir", default='', help="Server directory under which all data will be saved", dest="saveDataDir")
         parser.add_argument("--viewport-scale", default=1.0, type=float, help="Viewport scaling factor", dest="viewportScale")

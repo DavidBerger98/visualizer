@@ -4,7 +4,8 @@
         { "name": "Cone" },
         { "name": "Sphere" },
         { "name": "Text" },
-        { "name": "Wavelet" }
+        { "name": "Wavelet" },
+        { "name": "MeroVTKReader" }
     ],
 
     "filters": [
